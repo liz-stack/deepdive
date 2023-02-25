@@ -10,3 +10,10 @@ score = 80 //값 할당
 var score; //변수 선언
 
 console.log(score) // 80
+
+
+
+var x = 10;
+var y = x;
+
+console.log(x, y);
