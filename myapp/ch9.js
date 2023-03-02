@@ -57,8 +57,8 @@ undefined + ''      // "undefined"
     //객체 타입
     ({}) + ''       // "[object Object]"
 Math + ''           // "[object Math]"
-[] + ''             // ""
-    [10, 20] + ''   // "10,20"
+//[] + ''             // ""
+[10, 20] + ''   // "10,20"
         (function () { }) + '' // "function(){}"
 Array + ''          // "function Array() { [native code] }"
 
