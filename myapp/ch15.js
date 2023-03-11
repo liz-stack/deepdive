@@ -108,7 +108,35 @@ let x = 1;
 console.log(window.x); //undefined
 console.log(x); //1
 
+/* const 키워드 */
+//선언과 동시에 초기화해야함
+const foo = 1;
+const foo; //SyntaxError; Missing initializer in const declaration
 
+//재할당금지
+const foo = 1;
+foo = 2; //TypeError: Assignment to constant variable.
+
+//let과 마찬가지로 블록 레벨 스코프를 가짐
+{   //변수 호이스팅이 발생하지 않는 것처럼 동작
+    console.log(foo); //ReferenceError: Cannot access 'foo' before initialization
+    const foo = 1;
+    console.log(foo); //1
+}
+
+//상수인 원시값에 사용
+
+/* let preTaxPrice = 100; //세전가격
+let afterTaxPrice = preTaxPrice + (preTaxPrice * 0.1); //세후가격
+// 0.1의 의미를 명확히 알기어렵기때문에 가독성이 좋지 않다
+
+console.log(afterTaxPrice); */
+
+const TAX_RATE = 0.1;
+let preTaxPrice = 100;
+let afterTaxPrice = preTaxPrice + (afterTaxPrice * TAX_RATE);
+
+console.log(afterTaxPrice);
 
 //const키워드로 선언된 변수에 객체를 할당한 경우 값의 변경이 가능하다.
 const person = {
@@ -121,20 +149,21 @@ console.log(person); //{ name : "Kim"}
 
 
 /* 14-15장 토론 */
+
 // 클로저 사용시 중첩함수가 있으면, 중첩함수가 외부함수보다 오래 살아남는 경우가 있다.
+// -> 함수와 지역변수 생애주기가 일치하는 것만은 아님
 
-// 모듈<클래스 선호하는 이유? 가독성, 개인 취향
+// Jay) 모듈보다클래스 선호하는 이유? 가독성, 개인 취향
 
 
-//네임스페이스 오염이 뭘까?
 // 전역변수 사용하는 케이스? 코딩하다가 에러가 났는데
-// 전역변수를 전달하다 보면은 편하지만 추적하지 어렵다.
+// 전역변수를 전달하다 보면은 편하긴 하지만 추적하지 어렵다.
 
 /*
 즉시실행함수로 사용하는 이유? 익명함수기 떄문에 잘 사용하지는 않는다.(가독성 떨어짐)
 - 옛날 테크닉인거 같다.
 - 프론트엔드 개발자들은 라이브러리 많이 사용
-- 리액트의 경우 모듈을 많이 쓰니까 지역변수 스코프로 잡아서 쓰는 경우가 많은데
+  리액트의 경우 모듈을 많이 쓰니까 지역변수 스코프로 잡아서 쓰는 경우가 많은데
   에이전시 회사(퍼블리셔)에서는 즉시실행 함수 많이씀.
  (헤더, 메인 컨텐츠에 들어가는 애니메이션 등등)
  */
